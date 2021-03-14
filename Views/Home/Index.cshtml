@@ -1,0 +1,92 @@
+﻿@model LinkManager;
+<h1>The Links</h1>
+
+<form asp-controller="Login" asp-action="Login">
+    <div class="form-group">
+        <input type="submit" value="Login as Admin" class="btn btn-success">
+    </div>
+</form>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <div><h4>@ViewBag.dbcategories[0].categoryName</h4></div>
+            <div class="border border-secondary"></div>
+                @if ((ViewBag.dbPinCategories.pinned_Category_0.Count != 0) && (ViewBag.dbPinCategories.pinned_Category_0 != null)){
+                    @foreach(var item in ViewBag.dbPinCategories.pinned_Category_0) {
+                    <div><img src="https://www.google.com/s2/favicons?domain_url=@item.link">&nbsp;
+                        <a href ='@item.link' target='_blank' class="text-info">@item.name</a></div>
+                    }
+                    <div class="border border-info"></div>
+                }
+                @if ((Model.category_0.Count != 0) && (Model.category_0 != null)){
+                @foreach(var item in Model.category_0) {
+                    <div><img src="https://www.google.com/s2/favicons?domain_url=@item.link">&nbsp;
+                        <a href ='@item.link' target='_blank'>@item.name</a></div>
+                }
+                } else {
+                    <span class="text-secondary">No Data To Display</span>
+                }
+        </div>
+
+        <div class="col-sm-3">
+            <div><h4>@ViewBag.dbcategories[1].categoryName</h4></div>
+            <div class="border border-secondary"></div>
+                @if ((ViewBag.dbPinCategories.pinned_Category_1.Count != 0) && (ViewBag.dbPinCategories.pinned_Category_1 != null)){
+                    @foreach(var item in ViewBag.dbPinCategories.pinned_Category_1) {
+                        <div><img src="https://www.google.com/s2/favicons?domain_url=@item.link">&nbsp;
+                            <a href ='@item.link' target='_blank' class="text-info">@item.name</a></div>
+                    }
+                    <div class="border border-info"></div>
+                }
+                @if ((Model.category_1.Count != 0) && (Model.category_1 != null)){
+                @foreach(var item in Model.category_1) {
+                    <div><img src="https://www.google.com/s2/favicons?domain_url=@item.link">&nbsp;
+                        <a href ='@item.link' target='_blank'>@item.name</a></div>
+                }
+                } else {
+                    <span class="text-secondary">No Data To Display</span>
+                }
+        </div>
+
+        <div class="col-sm-3"> 
+            <div><h4>@ViewBag.dbcategories[2].categoryName</h4></div>
+            <div class="border border-secondary"></div>
+                @if ((ViewBag.dbPinCategories.pinned_Category_2.Count != 0) && (ViewBag.dbPinCategories.pinned_Category_2 != null)){
+                    @foreach(var item in ViewBag.dbPinCategories.pinned_Category_2) {
+                    <div><img src="https://www.google.com/s2/favicons?domain_url=@item.link">&nbsp;
+                        <a href ='@item.link' target='_blank' class="text-info">@item.name</a></div>
+                    }
+                    <div class="border border-info"></div>
+                }
+                @if ((Model.category_2.Count != 0) && (Model.category_2 != null)){
+                    @foreach(var item in Model.category_2) {
+                    <div><img src="https://www.google.com/s2/favicons?domain_url=@item.link">&nbsp;
+                        <a href ='@item.link' target='_blank' >@item.name</a></div>
+                }
+                } else {
+                    <span class="text-secondary">No Data To Display</span>
+                }
+        </div>
+
+        <div class="col-sm-3">
+                <div><h4>@ViewBag.dbcategories[3].categoryName</h4></div>
+                <div class="border border-secondary"></div>
+                @if ((ViewBag.dbPinCategories.pinned_Category_3.Count != 0) && (ViewBag.dbPinCategories.pinned_Category_3 != null)){
+                    @foreach(var item in ViewBag.dbPinCategories.pinned_Category_3) {
+                    <div><img src="https://www.google.com/s2/favicons?domain_url=@item.link">&nbsp;
+                        <a href ='@item.link' target='_blank' class="text-info">@item.name</a></div>
+                    }
+                    <div class="border border-info"></div>
+                }
+                @if ((Model.category_0.Count != 0) && (Model.category_0 != null)){
+                @foreach(var item in Model.category_3) {
+                    <div><img src="https://www.google.com/s2/favicons?domain_url=@item.link">&nbsp;
+                        <a href ='@item.link' target='_blank' >@item.name</a></div>
+                }
+                } else {
+                    <span class="text-secondary">No Data To Display</span>
+                }
+        </div>
+    </div>
+</div>

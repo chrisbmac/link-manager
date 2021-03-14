@@ -1,0 +1,35 @@
+@model DBCategory;
+<h1>Administration Links Page</h1>
+
+<div class="form-group">
+    <form>
+    <input type="submit" asp-controller="Home" asp-action="Index" value="Sign out" text="Sign out" class="btn btn-success">
+    </form>
+</div>
+
+<h2>Edit Category</h2>
+
+<div class="row my-2">
+    <div class="col">
+        <form method="post">
+            <div class="form-group">
+                <label>Editing: <span class="text-info">@ViewBag.editcategories.categoryName</span></label>
+                <input type="hidden" value="@ViewBag.editcategories.categoryID" name="catID"/>
+            </div>   
+            <div class="form-group">
+                <label for="categoryName">Enter a new Category Name:</label>
+                <input id="categoryName" type="text" asp-for="categoryName" class="form-control" value="@ViewBag.editcategories.categoryName" max-length="25"/>
+            </div>
+                
+            <div class="form-group">
+                <input class="btn btn-success" type="submit" asp-controller="Admin" asp-action="SubmitEditCategory" />
+                <a asp-controller="Admin" asp-action="AdminIndex" ><input class="btn btn-warning" type="button" value="Cancel"/></a>
+            </div>
+                <div asp-validation-summary="All" class="text-danger"></div>
+             
+        </form>
+    </div>
+</div>
+@section scripts {
+    <script>startAutoLogout();</script>
+}

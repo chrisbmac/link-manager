@@ -1,0 +1,247 @@
+@model LinkManager;
+<h1>Administration Links Page</h1>
+
+<div class="form-group">
+    <form>
+    <input type="submit" asp-controller="Home" asp-action="Index" value="Sign out" text="Sign out" class="btn btn-success">
+    </form>
+</div>
+<span class="text-info">@TempData["adminFeedBack"]</span>
+<span id="lblExpire" class="text-warning" style="margin-left:10px"></span>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+                <div><h4>@ViewBag.adminIndexcategories[0].categoryName</h4>
+                    <a class="btn btn-warning btn-xs" asp-controller="Admin" asp-action="AddLink" asp-route-addcatid="@ViewBag.adminIndexcategories[0].categoryID">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d='@ViewData["addIcon"]'/>
+                        </svg>
+                    </a> 
+                    
+                    <a class="btn btn-secondary btn-xs" asp-controller="Admin" asp-action="EditCategory" asp-route-catID="@ViewBag.adminIndexcategories[0].categoryID">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d='@ViewData["pencilIcon"]'/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="border border-secondary"></div>
+                @if ((ViewBag.dbPinCategories.pinned_Category_0.Count != 0) && (ViewBag.dbPinCategories.pinned_Category_0 != null)){
+                    @foreach(var item in ViewBag.dbPinCategories.pinned_Category_0) {
+                    <div>
+                        <a class="btn btn-warning btn-xs"  asp-controller="Admin" asp-action="EditPinnedLink" asp-route-pinLinkID="@item.pinnedLinkID">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d='@ViewData["pencilIcon"]'/>
+                            </svg> 
+                        </a> 
+
+                        <a class="btn btn-secondary btn-xs" asp-controller="Admin" asp-action="DeletePinnedLink" asp-route-pinLinkID="@item.pinnedLinkID">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d='@ViewData["garbadeD"]'/>
+                                <path fill-rule="evenodd" d='@ViewData["garbadeD2"]'/>
+                            </svg>
+                        </a>
+                        <img src="https://www.google.com/s2/favicons?domain_url=@item.link">&nbsp;
+                        <a href ='@item.link' target='_blank' class="text-info">@item.name</a>
+                    </div>    
+                    }
+                    <div class="border border-info"></div>
+                }
+                @if ((Model.category_0.Count != 0) && (Model.category_0 != null)){
+                @foreach(var item in Model.category_0) {
+                    <div>
+                        <a class="btn btn-warning btn-xs" asp-controller="Admin" asp-action="EditLink" asp-route-linkID="@item.linkID">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d='@ViewData["pencilIcon"]'/>
+                            </svg> 
+                        </a> 
+                        <a class="btn btn-secondary btn-xs" asp-controller="Admin" asp-action="DeleteLink" asp-route-linkID="@item.linkID">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d='@ViewData["garbadeD"]'/>
+                                <path fill-rule="evenodd" d='@ViewData["garbadeD2"]'/>
+                            </svg>
+                        </a>
+                        <img src="https://www.google.com/s2/favicons?domain_url=@item.link">&nbsp;
+                        <a href ='@item.link' target='_blank' >@item.name</a>
+                    </div>
+                }
+                } else {
+                    <span class="text-secondary">No Data To Display</span>
+                }
+        </div>
+
+        <div class="col-sm-3">
+                <div><h4>@ViewBag.adminIndexcategories[1].categoryName</h4>
+                    <a class="btn btn-warning btn-xs" asp-controller="Admin" asp-action="AddLink" asp-route-addcatid="@ViewBag.adminIndexcategories[1].categoryID">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d='@ViewData["addIcon"]'/>
+                        </svg>
+                    </a> 
+                    <a class="btn btn-secondary btn-xs" asp-controller="Admin" asp-action="EditCategory" asp-route-catID="@ViewBag.adminIndexcategories[1].categoryID">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d='@ViewData["pencilIcon"]'/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="border border-secondary"></div>
+                @if ((ViewBag.dbPinCategories.pinned_Category_1.Count != 0) && (ViewBag.dbPinCategories.pinned_Category_1 != null)){
+                    @foreach(var item in ViewBag.dbPinCategories.pinned_Category_1) {
+                        <div>
+                            <a class="btn btn-warning btn-xs" asp-controller="Admin" asp-action="EditPinnedLink" asp-route-pinLinkID="@item.pinnedLinkID">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d='@ViewData["pencilIcon"]'/>
+                                </svg>
+                            </a> 
+                            <a class="btn btn-secondary btn-xs" asp-controller="Admin" asp-action="DeletePinnedLink" asp-route-pinLinkID="@item.pinnedLinkID">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d='@ViewData["garbadeD"]'/>
+                                    <path fill-rule="evenodd" d='@ViewData["garbadeD2"]'/>
+                                </svg>
+                            </a>
+                            <img src="https://www.google.com/s2/favicons?domain_url=@item.link">&nbsp;
+                            <a href ='@item.link' target='_blank' class="text-info">@item.name</a>
+                        </div>
+                    }
+                    <div class="border border-info"></div>
+                }
+                @if ((Model.category_1.Count != 0) && (Model.category_1 != null)){
+                    @foreach(var item in Model.category_1) {
+                        <div>
+                            <a class="btn btn-warning btn-xs" asp-controller="Admin" asp-action="EditLink" asp-route-linkID="@item.linkID">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d='@ViewData["pencilIcon"]'/>
+                                </svg>
+                            </a> 
+                            <a class="btn btn-secondary btn-xs" asp-controller="Admin" asp-action="DeleteLink" asp-route-linkID="@item.linkID">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d='@ViewData["garbadeD"]'/>
+                                    <path fill-rule="evenodd" d='@ViewData["garbadeD2"]'/>
+                                </svg>
+                            </a>
+                            <img src="https://www.google.com/s2/favicons?domain_url=@item.link">&nbsp;
+                            <a href ='@item.link' target='_blank'>@item.name</a>
+                        </div>
+                    } 
+                } else {
+                    <span class="text-secondary">No Data To Display</span>
+                }
+        </div>
+
+        <div class="col-sm-3">
+                <div><h4>@ViewBag.adminIndexcategories[2].categoryName</h4>
+                    <a class="btn btn-warning btn-xs" asp-controller="Admin" asp-action="AddLink" asp-route-addcatid="@ViewBag.adminIndexcategories[2].categoryID">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d='@ViewData["addIcon"]'/>
+                        </svg>
+                    </a> 
+                    <a class="btn btn-secondary btn-xs" asp-controller="Admin" asp-action="EditCategory" asp-route-catID="@ViewBag.adminIndexcategories[2].categoryID">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d='@ViewData["pencilIcon"]'/>
+                        </svg>
+                    </a>
+               </div>
+               <div class="border border-secondary"></div>
+               @if ((ViewBag.dbPinCategories.pinned_Category_2.Count != 0) && (ViewBag.dbPinCategories.pinned_Category_2 != null)){
+                    @foreach(var item in ViewBag.dbPinCategories.pinned_Category_2) {
+                    <div>
+                        <a class="btn btn-warning btn-xs" asp-controller="Admin" asp-action="EditPinnedLink" asp-route-pinLinkID="@item.pinnedLinkID">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d='@ViewData["pencilIcon"]'/>
+                            </svg> 
+                        </a> 
+                        <a class="btn btn-secondary btn-xs" asp-controller="Admin" asp-action="DeletePinnedLink" asp-route-pinLinkID="@item.pinnedLinkID">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d='@ViewData["garbadeD"]'/>
+                                <path fill-rule="evenodd" d='@ViewData["garbadeD2"]'/>
+                            </svg>
+                        </a>
+                        <img src="https://www.google.com/s2/favicons?domain_url=@item.link">&nbsp;
+                        <a href ='@item.link' target='_blank' class="text-info">@item.name</a>
+                    </div>
+                    }
+                    <div class="border border-info"></div>
+                }
+                @if ((Model.category_2.Count != 0) && (Model.category_2 != null)){
+                    @foreach(var item in Model.category_2) {
+                        <div>
+                            <a class="btn btn-warning btn-xs" asp-controller="Admin" asp-action="EditLink" asp-route-linkID="@item.linkID">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d='@ViewData["pencilIcon"]'/>
+                                </svg>
+                            </a> 
+                            <a class="btn btn-secondary btn-xs" asp-controller="Admin" asp-action="DeleteLink" asp-route-linkID="@item.linkID">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d='@ViewData["garbadeD"]'/>
+                                    <path fill-rule="evenodd" d='@ViewData["garbadeD2"]'/>
+                                </svg>
+                            </a>
+                            <img src="https://www.google.com/s2/favicons?domain_url=@item.link">&nbsp;
+                            <a href ='@item.link' target='_blank'>@item.name</a>
+                        </div>
+                    } 
+                }else {
+                    <span class="text-secondary">No Data To Display</span>
+                } 
+        </div>
+
+        <div class="col-sm-3">
+                <div><h4>@ViewBag.adminIndexcategories[3].categoryName</h4>
+                    <a class="btn btn-warning btn-xs" asp-controller="Admin" asp-action="AddLink" asp-route-addcatid="@ViewBag.adminIndexcategories[3].categoryID">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d='@ViewData["addIcon"]'/>
+                        </svg> 
+                    </a>
+                    <a class="btn btn-secondary btn-xs" asp-controller="Admin" asp-action="EditCategory" asp-route-catID="@ViewBag.adminIndexcategories[3].categoryID">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d='@ViewData["pencilIcon"]'/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="border border-secondary"></div>
+                @if ((ViewBag.dbPinCategories.pinned_Category_3.Count != 0) && (ViewBag.dbPinCategories.pinned_Category_3 != null)){
+                    @foreach(var item in ViewBag.dbPinCategories.pinned_Category_3) {
+                    <div>
+                        <a class="btn btn-warning btn-xs" asp-controller="Admin" asp-action="EditPinnedLink" asp-route-pinLinkID="@item.pinnedLinkID">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d='@ViewData["pencilIcon"]'/>
+                            </svg> 
+                        </a> 
+                        <a class="btn btn-secondary btn-xs" asp-controller="Admin" asp-action="DeletePinnedLink" asp-route-pinLinkID="@item.pinnedLinkID">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d='@ViewData["garbadeD"]'/>
+                                <path fill-rule="evenodd" d='@ViewData["garbadeD2"]'/>
+                            </svg>
+                        </a>
+                        <img src="https://www.google.com/s2/favicons?domain_url=@item.link">&nbsp;
+                        <a href ='@item.link' target='_blank' class="text-info">@item.name</a>
+                    </div>
+                    }
+                    <div class="border border-info"></div>
+                }
+                @if ((Model.category_3.Count != 0) && (Model.category_3 != null)){
+                    @foreach(var item in Model.category_3) {
+                        <div>
+                            <a class="btn btn-warning btn-xs" asp-controller="Admin" asp-action="EditLink" asp-route-linkID="@item.linkID">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d='@ViewData["pencilIcon"]' />
+                                </svg>
+                            </a> 
+                            <a class="btn btn-secondary btn-xs" asp-controller="Admin" asp-action="DeleteLink" asp-route-linkID="@item.linkID">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d='@ViewData["garbadeD"]'/>
+                                    <path fill-rule="evenodd" d='@ViewData["garbadeD2"]'/>
+                                </svg>
+                            </a>
+                            <img src="https://www.google.com/s2/favicons?domain_url=@item.link">&nbsp;
+                            <a href ='@item.link' target='_blank'>@item.name</a>
+                        </div>
+                } 
+                } else {
+                    <span class="text-secondary">No Data To Display</span>
+                }
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script>startAutoLogout();</script>
+}

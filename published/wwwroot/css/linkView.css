@@ -1,0 +1,75 @@
+
+a {
+    overflow: hidden;
+  white-space: wrap;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+   cursor: pointer;
+   text-decoration: none;
+   color: white;
+   margin-bottom: 5px;
+   margin-top: 5px; 
+}
+.btn-group-xs > .btn, .btn-xs {
+    padding: .25rem .4rem;
+    font-size: .875rem;
+    line-height: .5;
+    border-radius: .2rem;
+  }
+
+.border-secondary > .border, .border-secondary , .border-info{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.linkContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+body {
+    background-color: rgba(0, 0, 0, 0.842);
+}
+
+h1 {
+    color:rgba(240, 240, 0, 0.671);
+}
+
+h5 {
+    color:white;
+}
+
+h4 {
+    color: white;
+}
+
+h2 {
+    color:white;
+}
+
+.links {
+    color: white;
+}
+
+p {
+    overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+    color: white;
+}
+
+label {
+    overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+    color: white;
+}
+
+span {
+    overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+    color: white;
+}

@@ -1,0 +1,46 @@
+@model DBLink;
+<h1>Administration Links Page</h1>
+
+<div class="form-group">
+    <form>
+    <input type="submit" asp-controller="Home" asp-action="Index" value="Sign out" text="Sign out" class="btn btn-success">
+    </form>
+</div>
+
+<h2>Edit Link</h2>
+<div class="row my-2">
+    <div class="col">
+        <form method="post">
+            <div class="form-group">
+                <label>Edit the selected Link</label>
+            </div>
+            <div class="form-group">
+                <label>Category:</label><br>
+                <select asp-for="categoryID" class="btn btn-secondary" asp-items="@ViewBag.selectListCatMan"></select>
+                <input type="hidden" asp-for="linkID" value='@TempData["linkID"]'/>
+            </div>
+            <div class="form-group">
+                <label>Link Name</label>
+                <input type="text" asp-for="name" value="@ViewBag.link.name" max-length="25" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label>Link href:</label>
+                <input type="text" asp-for="link" value="@ViewBag.link.link" max-length="100" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <input type="checkbox" name="pinnedToTop" id="addLink_pinLink" data-val="true" value="true">
+                <label class="custom-control-label" for="addLink_pinLink">Toggle to pin link to top</label>
+                <input name="pinnedToTop" type="hidden" value="false"/>
+            </div>
+            <div class="form-group">
+                <input class="btn btn-success" type="submit" asp-controller="Admin" asp-action="SubmitEditLink" />
+                <a asp-controller="Admin" asp-action="AdminIndex" ><input class="btn btn-warning" type="button" value="Cancel"/></a>
+            </div>
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </form>
+    </div>
+</div>
+@section scripts {
+    <script>startAutoLogout();</script>
+}
